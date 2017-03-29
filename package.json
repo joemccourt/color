@@ -1,0 +1,22 @@
+{
+  "name": "color",
+  "version": "0.1.0",
+  "description": "Useful color functions",
+  "main": "color.js",
+  "scripts": {
+    "test": "jasmine-node src/ColorParse.spec.js",
+    "lint": "./node_modules/.bin/eslint 'src/*.js' 'example/*.js'"
+  },
+  "author": "Joe McCourt",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-requirejs": "^0.1.3"
+  }
+}
