@@ -118,3 +118,34 @@ describe('parse hex', () => {
         });
     });
 });
+
+describe('parse rgb strings', () => {
+    it('rgb', () => {
+        Object.keys(COLORS).forEach((color) => {
+            let c = COLORS[color];
+            if (c.a !== 1) { return; }
+            let str = `rgb(${c.r},${c.g},${c.b})`;
+            let parsed = new ColorParse(str).color;
+            expectCloseRGB(parsed, c);
+        });
+    });
+
+    it('rgb with spaces', () => {
+        Object.keys(COLORS).forEach((color) => {
+            let c = COLORS[color];
+            if (c.a !== 1) { return; }
+            let str = `rgb(${c.r}, ${c.g}, ${c.b}   )`;
+            let parsed = new ColorParse(str).color;
+            expectCloseRGB(parsed, c);
+        });
+    });
+
+    it('rgba', () => {
+        Object.keys(COLORS).forEach((color) => {
+            let c = COLORS[color];
+            let str = `rgba(${c.r}, ${c.g}, ${c.b}, ${c.a})`;
+            let parsed = new ColorParse(str).color;
+            expectCloseRGB(parsed, c);
+        });
+    });
+});

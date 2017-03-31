@@ -31,13 +31,30 @@ const fromString = (colorStr) => {
         }
     }
 
-    // if (colorStr.startsWith('rgba(')) {
+    if (colorStr.startsWith('rgb(')) {
+        let colorStrSplit = colorStr.substr(4)
+                                .split(',')
+                                .map(s => s.replace(')', ''))
+                                .map(s => parseFloat(s, 10));
 
-    // }
+        color.r = colorStrSplit[0];
+        color.g = colorStrSplit[1];
+        color.b = colorStrSplit[2];
+        return color;
+    }
 
-    // if (colorStr.startsWith('rgb(')) {
+    if (colorStr.startsWith('rgba(')) {
+        let colorStrSplit = colorStr.substr(5)
+                                .split(',')
+                                .map(s => s.replace(')', ''))
+                                .map(s => parseFloat(s, 10));
 
-    // }
+        color.r = colorStrSplit[0];
+        color.g = colorStrSplit[1];
+        color.b = colorStrSplit[2];
+        color.a = colorStrSplit[3];
+        return color;
+    }
 
     return color;
 };
