@@ -71,13 +71,32 @@ class ColorParse {
                 r: color.r,
                 g: color.g,
                 b: color.b,
+                a: 1,
             };
+            if (color.a !== undefined) {
+                this.color.a = color.a;
+            }
         }
     }
 
     toRGB() {
         let c = this.color;
         return `rgb(${c.r},${c.g},${c.b})`;
+    }
+
+    toRGBA() {
+        let c = this.color;
+        return `rgba(${c.r},${c.g},${c.b},${c.a})`;
+    }
+
+    toHex() {
+        let c = this.color;
+        // let r, g, b;
+        let inHex = [c.r, c.g, c.b]
+            .map(x => x.toString(16).toUpperCase())
+            .map(s => (s.length === 1 ? '0' : '') + s)
+            .join('');
+        return `#${inHex}`;
     }
 }
 

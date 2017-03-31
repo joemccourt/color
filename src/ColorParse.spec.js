@@ -150,13 +150,31 @@ describe('parse rgb strings', () => {
     });
 });
 
-describe('from object', () => {
+describe('to strings methods', () => {
     it('from object to rgb', () => {
         Object.keys(COLORS).forEach((color) => {
             let c = COLORS[color];
             let parsed = new ColorParse(c);
             let str = `rgb(${c.r},${c.g},${c.b})`;
             expect(parsed.toRGB()).toEqual(str);
+        });
+    });
+
+    it('to rgba', () => {
+        Object.keys(COLORS).forEach((color) => {
+            let c = COLORS[color];
+            let parsed = new ColorParse(c);
+            let str = `rgba(${c.r},${c.g},${c.b},${c.a})`;
+            expect(parsed.toRGBA()).toEqual(str);
+        });
+    });
+
+    it('from and to hex', () => {
+        Object.keys(COLORS).forEach((color) => {
+            let c = COLORS[color];
+            if (!c.hex6) { return; }
+            let parsed = new ColorParse(c);
+            expect(parsed.toHex()).toEqual(c.hex6);
         });
     });
 });
