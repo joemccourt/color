@@ -61,11 +61,21 @@ const fromString = (colorStr) => {
 
 class ColorParse {
     constructor(color) {
-        this.color = fromString(color);
+        let type = typeof color;
+        if (type === 'string') {
+            this.color = fromString(color);
+        } else if (type === 'number') {
+            // todo uint 32
+        } else if (type === 'object') {
+            this.color = {
+                r: color.r,
+                g: color.g,
+                b: color.b,
+            };
+        }
     }
 
     toRGB() {
-        // return this.color;
         let c = this.color;
         return `rgb(${c.r},${c.g},${c.b})`;
     }

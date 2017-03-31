@@ -149,3 +149,14 @@ describe('parse rgb strings', () => {
         });
     });
 });
+
+describe('from object', () => {
+    it('from object to rgb', () => {
+        Object.keys(COLORS).forEach((color) => {
+            let c = COLORS[color];
+            let parsed = new ColorParse(c);
+            let str = `rgb(${c.r},${c.g},${c.b})`;
+            expect(parsed.toRGB()).toEqual(str);
+        });
+    });
+});
